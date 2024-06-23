@@ -1,11 +1,14 @@
 [package]
-name = "ik_cpp"
+name = "ik_geo"
 version = "0.1.0"
 edition = "2021"
 
 [lib]
-name = "ik_cpp"
-crate-type = ["staticlib"]
+name = "ik_geo"
+crate-type = ["dylib"]
 
 [dependencies]
-ik-geo = { path = "../../ik-geo-rust" }
+ik-geo = {path = "../../ik-geo-rust"}
+
+[build-dependencies]
+cxx-build = "1.0"
