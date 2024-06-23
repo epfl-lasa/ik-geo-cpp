@@ -1,23 +1,59 @@
 # IK Geo C++
 
-This is a wrapper for the Rust implementation for C++
+This is a wrapper for the Rust implementation for C++. The outpiut of this build is 2 files:
+
+1. ik_geo.h
+2. libik_geo.so/libik_geo.lib
 
 ## To build
 
-In this directory, run `cmake . && make`.  This will create a dist folder with three files:
- - `ik_geo.h`, a header file to include in a c++ project
- - `libik_cpp.a` (or `libik_cpp.lib` in Windows), a static library that must be included to use ik_geo in c++.
- - `libik_geo.a` (or `libik_geo.lib` in Windows), another static library that must be included as well.
+```bash
+mkdir build
+cd build
+cmake .. && make
+```
+
+## Including as a dependency
+
+You can get a CMake object to link against by including this source as a sub_directory.
+
+```cmake
+# Include the ik_geo cmake as a subdirectory
+add_subdirectory(.. IK_GEO)
+
+add_executable(test src/main.cpp)
+
+# Link against the ik_geo object produced by the ik_geo cmake
+target_link_libraries(test PRIVATE ik_geo)
+```
 
 ## To use
 
-Include the three files from the build step in the project, and look at `ik_geo.h` for function signatures.
+Include the header
 
-There is an example usage of this in `../examples/cpp`
+```c++
+#include "ik_geo.h"
+```
+
+Then you can create robots based off of kinematic specifications or select from hard coded ones
+
+```c++
+int main() {
+    Robot robot = Robot::ur5();
+    double rotation_matrix[9] = {
+        1.0, 0.0, 0.0,
+        0.0, 1.0, 0.0,
+        0.0, 0.0, 1.0
+    };
+
+    double position_vector[3] = {0.0, 0.0, 0.0};
+
+    std::vector<ik_geo::Solution> solutions;
+    robot.ik(rotation_matrix, position_vector, solutions);
+}
+```
 
 ## To do
 
- - Test Windows implementation
- - Create a GitHub workflow for generating the dist files
- - Create a moveit package
- - Add a wrapper for forward kinematics and allow for calculating error.
+-   Test Windows implementation
+-   Create a moveit package
