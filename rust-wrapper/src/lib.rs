@@ -1,4 +1,4 @@
-use ik_geo::nalgebra::{Matrix3, Vector3, Vector6};
+use ik_geo::nalgebra::{Matrix3, Vector3};
 use ik_geo::{
     inverse_kinematics::auxiliary::Kinematics,
     robot::{IKSolver, Robot},
