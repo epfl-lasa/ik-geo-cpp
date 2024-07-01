@@ -8,7 +8,7 @@ name = "ik_geo"
 crate-type = ["dylib"]
 
 [dependencies]
-ik-geo = {path = "../../ik-geo-rust"}
+ik-geo = "*"
 
 [build-dependencies]
 cxx-build = "1.0"
