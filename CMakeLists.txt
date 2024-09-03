@@ -23,7 +23,7 @@ ExternalProject_Add(
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
-add_library(ik_geo INTERFACE include/ik_geo.h)
+add_library(ik_geo INTERFACE)
 add_dependencies(ik_geo ik_geo_lib)
 target_include_directories(ik_geo INTERFACE include)
 
