@@ -44,6 +44,7 @@ class Robot {
 
 public:
   ~Robot() { lib::deallocate(robot); }
+  static Robot gen_six_dof(const double *h, const double *p) { return Robot(lib::gen_six_dof(h, p)); }
   static Robot irb66400() { return Robot(lib::irb6640()); }
   static Robot spherical_bot() { return Robot(lib::spherical_bot()); }
   static Robot three_parallel_bot() { return Robot(lib::three_parallel_bot()); }

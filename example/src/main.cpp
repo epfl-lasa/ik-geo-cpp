@@ -1,7 +1,8 @@
-#include "ik_geo.h"
 #include <array>
 #include <iostream>
 #include <vector>
+
+#include "ik_geo.h"
 
 using namespace ik_geo;
 
@@ -27,8 +28,7 @@ int main(int argc, char const *argv[]) {
     std::cout << "Is LS: " << (solution.is_ls ? "True" : "False") << std::endl;
     std::cout << "Rotation Matrix: " << std::endl;
     for (std::size_t i = 0; i < 3; i++) {
-      for (std::size_t j = 0; j < 3; j++)
-        std::cout << rotation_matrix[i * 3 + j] << " ";
+      for (std::size_t j = 0; j < 3; j++) std::cout << rotation_matrix[i * 3 + j] << " ";
       std::cout << std::endl;
     }
     std::cout << "Position Vector: " << std::endl;
